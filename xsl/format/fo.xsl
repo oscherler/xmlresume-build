@@ -58,10 +58,12 @@ $Id: fo.xsl,v 1.15 2002/11/10 20:48:58 brandondoyle Exp $
           page-height="{$page.height}"
           page-width="{$page.width}">
           <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
-          <fo:region-body overflow="hidden"
+          <!-- FIXME^2: overflow="hidden" kills half of the document -->
+          <fo:region-body
             margin-bottom="{$margin.bottom}"/>
           <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
-          <fo:region-after overflow="hidden"
+          <!-- FIXME^2: overflow="hidden" kills half of the document -->
+          <fo:region-after
             extent="{$margin.bottom}"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
@@ -225,7 +227,6 @@ $Id: fo.xsl,v 1.15 2002/11/10 20:48:58 brandondoyle Exp $
         <xsl:if test="string-length($PostCode) &gt; 0">
           <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text>
         </xsl:if>
-	</fo:block><fo:block>
         <xsl:apply-templates select="r:city"/>
       </fo:block>
         <xsl:if test="string-length($AdminDivision) &gt; 0">
