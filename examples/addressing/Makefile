@@ -40,15 +40,15 @@ RESUME = usa
 
 # uncomment these lines - and set STYLEDIR appropriately - to use a local
 # installation.
-#STYLEDIR=file:/usr/local/cvs/resume/src/www/xsl
-#HTML_STYLE = $(STYLEDIR)/us-html.xsl
-#FO_STYLE = $(STYLEDIR)/us-letter.xsl
-#TXT_STYLE = $(STYLEDIR)/us-text.xsl
+STYLEDIR=../../xsl/output
+HTML_STYLE = $(STYLEDIR)/us-html.xsl
+FO_STYLE = $(STYLEDIR)/us-letter.xsl
+TXT_STYLE = $(STYLEDIR)/us-text.xsl
 
 # otherwise, use the published versions over the net.
-HTML_STYLE = http://xmlresume.sourceforge.net/xsl/html.xsl
-FO_STYLE = http://xmlresume.sourceforge.net/xsl/fo.xsl
-TXT_STYLE = http://xmlresume.sourceforge.net/xsl/text.xsl
+#HTML_STYLE = http://xmlresume.sourceforge.net/xsl/html.xsl
+#FO_STYLE = http://xmlresume.sourceforge.net/xsl/fo.xsl
+#TXT_STYLE = http://xmlresume.sourceforge.net/xsl/text.xsl
 
 # The Java virtual machine.  If it's in your $PATH, you only need
 # the first version; if it isn't you'll need to specify the full path.
@@ -96,5 +96,5 @@ clean:
 	$(JAVACMD) -cp $(CLASSPATH) org.apache.xalan.xslt.Process -in $< -xsl $(FO_STYLE) -out $@ $(HDRFMT) -param address.format $($*_format)
 
 %.pdf: %.fo
-	$(JAVACMD) -cp $(CLASSPATH) org.apache.fop.apps.Fop $< $@
+	$(FOP_HOME)/fop $< $@
 

@@ -75,7 +75,7 @@ make = gmake
 xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $(in) -xsl $(xsl) -out $(out)
 #xsl_proc = java com.icl.saxon.StyleSheet $(xsl_flags) -o $(out) $(in) $(xsl) $(xsl_params)
 
-pdf_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
+pdf_proc = $(FOP_HOME)/fop -fo $(fo_flags) $(in) -pdf $(out)
 #pdf_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
 
 # RTF generation currently requires you download a separate, closed source jar 

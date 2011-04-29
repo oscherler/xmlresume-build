@@ -1,0 +1,8 @@
+examples/*.txt
+examples/*/*.txt
+examples/*.html
+examples/*/*.html
+examples/*.fo
+examples/*/*.fo
+examples/*.pdf
+examples/*/*.pdf
